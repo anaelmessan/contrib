@@ -8,14 +8,18 @@ COPY alexnet-pretrained.pt ./
 COPY pytorchexample.py ./
 USER root
 CMD [" "]
-RUN echo "deb [signed-by=/etc/apt/keyrings/intel-sgx-keyring.asc arch=amd64] https://download.01.org/intel-sgx/sgx_repo/ubuntu jammy main" | tee -a /etc/apt/sources.list.d/intel-sgx.list \
- && apt-get update \ 
+RUN apt-get update \ 
  && apt-get install curl \
- && curl -fsSLO https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key \ 
- && mv intel-sgx-deb.key /etc/apt/keyrings/intel-sgx-keyring.asc \
- && apt-get install libsgx-enclave-common-dev \
+RUN curl -fsSL https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key \
+    -o /etc/apt/keyrings/intel-sgx-keyring.gpg
+RUN echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/intel-sgx-keyring.gpg] https://download.01.org/intel-sgx/sgx_repo/ubuntu jammy main" \
+    > /etc/apt/sources.list.d/intel-sgx.list
+
+RUN apt-get update && apt-get install -y \
+    libsgx-enclave-common-dev \
     libsgx-dcap-ql-dev \
     libsgx-dcap-default-qpl-dev \
     tee-appraisal-tool
+
 
 ENTRYPOINT ["python3", "pytorchexample.py"]
