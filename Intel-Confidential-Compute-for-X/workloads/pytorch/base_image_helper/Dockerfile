@@ -9,6 +9,8 @@ COPY pytorchexample.py ./
 USER root
 CMD [" "]
 RUN echo "deb [signed-by=/etc/apt/keyrings/intel-sgx-keyring.asc arch=amd64] https://download.01.org/intel-sgx/sgx_repo/ubuntu jammy main" | tee -a /etc/apt/sources.list.d/intel-sgx.list \
+ && apt-get update
+ && apt-get install curl
  && curl -fsSLO https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key \ 
  && mv intel-sgx-deb.key /etc/apt/keyrings/intel-sgx-keyring.asc \
  && apt-get install libsgx-enclave-common-dev \
