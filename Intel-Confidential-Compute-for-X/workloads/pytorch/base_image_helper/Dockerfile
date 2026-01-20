@@ -8,5 +8,6 @@ COPY alexnet-pretrained.pt ./
 COPY pytorchexample.py ./
 USER root
 CMD [" "]
+RUN apt-get install -y linux-libc-dev
 
 ENTRYPOINT ["python3", "pytorchexample.py"]
