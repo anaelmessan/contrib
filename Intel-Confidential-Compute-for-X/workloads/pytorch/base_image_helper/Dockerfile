@@ -8,6 +8,6 @@ COPY alexnet-pretrained.pt ./
 COPY pytorchexample.py ./
 USER root
 CMD [" "]
-RUN apt-get install -y linux-libc-dev
+RUN apt-get install -y libsgx-dcap-default-qpl-dev, libsgx-dcap-default-qpl-dev
 
 ENTRYPOINT ["python3", "pytorchexample.py"]
