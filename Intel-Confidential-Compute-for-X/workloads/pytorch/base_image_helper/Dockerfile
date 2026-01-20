@@ -7,5 +7,6 @@ COPY classes.txt ./
 COPY alexnet-pretrained.pt ./
 COPY pytorchexample.py ./
 USER root
+CMD []
 
 ENTRYPOINT ["python3", "pytorchexample.py"]
