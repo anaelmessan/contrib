@@ -9,5 +9,6 @@ COPY kmeans_perf_eval.py ./
 COPY data ./data
 USER root
 ENTRYPOINT [" "]
+WORKDIR " "
 
 CMD ["python3", "kmeans_perf_eval.py"]
