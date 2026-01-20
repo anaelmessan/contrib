@@ -8,8 +8,8 @@ COPY alexnet-pretrained.pt ./
 COPY pytorchexample.py ./
 USER root
 CMD [" "]
-RUN apt-get update \ 
- && apt-get install curl
+RUN apt-get update -y \ 
+ && apt-get install -y curl
 RUN curl -fsSL https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key \
     -o /etc/apt/keyrings/intel-sgx-keyring.gpg
 RUN echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/intel-sgx-keyring.gpg] https://download.01.org/intel-sgx/sgx_repo/ubuntu jammy main" \
