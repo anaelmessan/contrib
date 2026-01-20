@@ -13,7 +13,7 @@ RUN apt-get update -y \
 RUN mkdir -p /etc/apt/keyrings
 RUN curl -fsSL https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key \
     -o /etc/apt/keyrings/intel-sgx-keyring.gpg
-RUN echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/intel-sgx-keyring.gpg] https://download.01.org/intel-sgx/sgx_repo/ubuntu jammy main" \
+RUN echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/intel-sgx-keyring.gpg] https://download.01.org/intel-sgx/sgx_repo/ubuntu focal main" \
     > /etc/apt/sources.list.d/intel-sgx.list
 
 RUN apt-get update && apt-get install -y \
