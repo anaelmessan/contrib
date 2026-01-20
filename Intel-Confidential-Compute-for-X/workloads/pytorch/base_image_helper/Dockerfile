@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: LGPL-3.0-or-later
 # Copyright (C) 2022 Intel Corporation
 
-FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
+FROM pytorch/pytorch:2.9.1-cuda12.6-cudnn9-runtime
 COPY input.jpg ./
 COPY classes.txt ./
 COPY alexnet-pretrained.pt ./
@@ -13,7 +13,7 @@ RUN apt-get update -y \
 RUN mkdir -p /etc/apt/keyrings
 RUN curl -fsSL https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key \
     -o /etc/apt/keyrings/intel-sgx-keyring.gpg
-RUN echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/intel-sgx-keyring.gpg] https://download.01.org/intel-sgx/sgx_repo/ubuntu focal main" \
+RUN echo "deb [signed-by=/etc/apt/keyrings/intel-sgx-keyring.asc arch=amd64] https://download.01.org/intel-sgx/sgx_repo/ubuntu noble main" \
     > /etc/apt/sources.list.d/intel-sgx.list
 
 RUN apt-get update && apt-get install -y \
