@@ -8,6 +8,6 @@ RUN pip3 install pandas
 COPY kmeans_perf_eval.py ./
 COPY data ./data
 USER root
-ENTRYPOINT []
+ENTRYPOINT [" "]
 
 CMD ["python3", "kmeans_perf_eval.py"]
