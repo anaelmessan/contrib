@@ -6,5 +6,6 @@ COPY input.jpg ./
 COPY classes.txt ./
 COPY alexnet-pretrained.pt ./
 COPY pytorchexample.py ./
+USER root
 
 ENTRYPOINT ["python3", "pytorchexample.py"]
